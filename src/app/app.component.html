@@ -1,0 +1,15 @@
+<div class="app-container">
+    <div class="hamburger-menu">
+      <button (click)="showMenu = !showMenu">
+        <i class="material-icons">menu</i>
+      </button>
+      <div *ngIf="showMenu" class="menu">
+        <a routerLink="/about" (click)="showMenu = false">About</a>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+    <footer>
+      <p>Weather App &copy; {{ currentYear }}</p>
+    </footer>
+</div>
+  

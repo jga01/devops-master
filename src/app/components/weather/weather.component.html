@@ -1,0 +1,15 @@
+<div class="weather-container">
+  <h1>Weather App</h1>
+  <div class="search-container">
+    <input [(ngModel)]="city" (keyup.enter)="searchWeather()" placeholder="Search for a city" />
+    <button (click)="searchWeather()">Search</button>
+  </div>
+  <div *ngIf="weatherData" class="weather-data">
+    <h2>{{ weatherData.location.name }}, {{ weatherData.location.country }}</h2>
+    <div class="weather-icon">
+      <img [src]="'https:' + weatherData.current.condition.icon" [alt]="weatherData.current.condition.text" />
+    </div>
+    <p>{{ weatherData.current.condition.text }}</p>
+    <p>{{ weatherData.current.temp_c | temperature }}</p>
+  </div>
+</div>
