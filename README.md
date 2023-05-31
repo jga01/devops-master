@@ -1,6 +1,6 @@
 # Desafio DevOps - Jenkins em Docker com aplicativo Angular e monitoramento do Nagios
 
-Este LEIAME fornece instruções sobre a configuração de um ambiente Jenkins em Docker com um aplicativo Angular e seu monitoramento usando o Nagios. A configuração envolve o uso do Terraform para provisionar a infraestrutura e automatizar o processo de implantação.
+Este README fornece instruções sobre a configuração de um ambiente Jenkins em Docker com um aplicativo Angular e seu monitoramento usando o Nagios. A configuração envolve o uso do Terraform para provisionar a infraestrutura e automatizar o processo de implantação.
 
 ## Pré-requisitos
 
@@ -16,9 +16,9 @@ Este LEIAME fornece instruções sobre a configuração de um ambiente Jenkins e
 git clone <repository-url>
 ```
 
-3. Configure Terraform: In the cloned repository, update the Terraform configuration files with the necessary details such as AWS credentials, region, and any other required parameters.
+3. Configure o Terraform: No repositório clonado, atualize os arquivos de configuração do Terraform com os detalhes necessários, como credenciais do AWS, região e quaisquer outros parâmetros necessários.
 
-4. Provision Infrastructure: Run the following command to initialize and apply the Terraform configuration, which will create the required infrastructure:
+4. Provisione a infraestrutura: Execute o seguinte comando para inicializar e aplicar a configuração do Terraform, que criará a infraestrutura necessária:
 
 ```csharp
 terraform init
