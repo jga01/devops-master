@@ -1,27 +1,92 @@
-# Devops
+# Desafio DevOps - Jenkins em Docker com aplicativo Angular e monitoramento do Nagios
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+Este LEIAME fornece instruções sobre a configuração de um ambiente Jenkins em Docker com um aplicativo Angular e seu monitoramento usando o Nagios. A configuração envolve o uso do Terraform para provisionar a infraestrutura e automatizar o processo de implantação.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Docker: certifique-se de que o Docker esteja instalado no sistema em que a implantação ocorrerá. Você pode consultar a documentação oficial do Docker para obter instruções de instalação específicas para o seu sistema operacional.
 
-## Code scaffolding
+## Provisionamento de infraestrutura
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Instale o Terraform: Se você não tiver o Terraform instalado, siga a documentação oficial do Terraform para instalá-lo em seu computador local.
 
-## Build
+2. Clone o repositório: Clone o repositório que contém os arquivos de configuração do Terraform para provisionar a infraestrutura.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```csharp
+git clone <repository-url>
+```
 
-## Running unit tests
+3. Configure Terraform: In the cloned repository, update the Terraform configuration files with the necessary details such as AWS credentials, region, and any other required parameters.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+4. Provision Infrastructure: Run the following command to initialize and apply the Terraform configuration, which will create the required infrastructure:
 
-## Running end-to-end tests
+```csharp
+terraform init
+terraform apply
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Configuração do Jenkins com Docker
 
-## Further help
+Depois que a infraestrutura for provisionada, siga estas etapas para configurar o ambiente Dockerized Jenkins:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Faça o SSH na instância provisionada ou acesse-a por meio do endereço IP configurado.
+
+2. Instale o Docker na instância se ele ainda não estiver instalado.
+
+3. Extraia a imagem do Docker do Jenkins e execute-a usando a configuração apropriada.
+
+## Pipeline de CI/CD com Jenkins Dockerizado
+
+### Configurar o Jenkins:
+
+- Acesse a instância do Jenkins abrindo um navegador da Web e inserindo o URL do Jenkins.
+
+- Siga as instruções na tela para concluir a configuração inicial do Jenkins.
+
+- Instale todos os plug-ins necessários e configure o Jenkins de acordo com seus requisitos.
+
+### Conecte o Jenkins ao GitHub:
+
+- Na interface da Web do Jenkins, vá para "Manage Jenkins" (Gerenciar Jenkins) > "Manage Plugins" (Gerenciar plug-ins) e instale os plug-ins necessários para a integração com o GitHub (por exemplo, plug-in do GitHub, plug-in do Git).
+
+- Configure um webhook do GitHub nas configurações do seu repositório para acionar as compilações do Jenkins sempre que houver um novo commit.
+
+### Criar o pipeline do Jenkins:
+
+- No Jenkins, crie um novo trabalho de pipeline.
+
+- Configure o pipeline para buscar o código-fonte do aplicativo Angular no repositório do GitHub.
+
+- Defina as etapas de compilação necessárias, como a instalação de dependências, a compilação do aplicativo Angular e a geração de artefatos.
+
+### Teste o pipeline de CI/CD:
+
+- Envie um novo commit para o repositório do GitHub.
+
+- Verifique a interface da Web do Jenkins para verificar se uma nova compilação é acionada automaticamente.
+
+- Monitore os registros de compilação e garanta que o aplicativo Angular seja compilado com êxito.
+
+## Monitoramento do Nagios do aplicativo Angular
+
+### Instale o Nagios:
+
+- Configure um servidor separado ou use um servidor existente para instalar o Nagios.
+
+- Siga a documentação oficial do Nagios para instalar e configurar o Nagios no servidor escolhido.
+
+### Monitorar o aplicativo Angular:
+
+- Configure o Nagios para monitorar o aplicativo Angular implantado.
+
+- Configure os plug-ins do Nagios ou scripts personalizados para monitorar métricas como tempo de resposta, uso da CPU e da memória e taxas de solicitação.
+
+- Defina limites apropriados e regras de alerta para garantir notificações oportunas de quaisquer problemas.
+
+### Teste o monitoramento do Nagios:
+
+- Acesse a interface da Web do Nagios para verificar se o aplicativo Angular está sendo monitorado.
+
+- Acione alertas introduzindo falhas ou simulando cenários de alta utilização de recursos.
+
+- Verifique se o Nagios gera alertas e notificações conforme o esperado.
