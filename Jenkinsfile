@@ -1,7 +1,7 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent any
-    tools {nodejs "NodeJS"}
+    tools {nodejs "Node"}
     stages {
         stage('Build') {
             steps {
