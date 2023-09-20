@@ -11,7 +11,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'mv dist/* ~/var/www/my-app'
+                sh 'mkdir -p /var/www/my-app'
+                sh 'mv dist/* /var/www/my-app'
             }
         }
     }
