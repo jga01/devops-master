@@ -12,6 +12,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'mkdir -p www/my-app'
+                sh 'rm -r www/my-app/devops/*'
                 sh 'mv dist/* www/my-app'
             }
         }
